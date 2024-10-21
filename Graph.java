@@ -51,6 +51,7 @@ public class Graph {
         file.createNewFile();
         FileWriter writer = new FileWriter(file);
 
+        writer.write("digraph G {\n");
         for (Node node : nodes) {
             writer.write(
                     node.code + " [xlabel=<<font color=\"darkgreen\"><B>" + node.getHeuristic() + "</B></font>>];\n");
@@ -59,6 +60,8 @@ public class Graph {
         for (Edge edge : edges) {
             writer.write(edge.a.code + " -> " + edge.b.code + " [label=\"" + edge.distance + "\"];\n");
         }
+
+        writer.write("}");
         writer.close();
     }
 }

@@ -55,8 +55,11 @@ public class Tree {
         file.createNewFile();
         FileWriter writer = new FileWriter(file);
 
+        writer.write("digraph G {\n");
+
         for (TreeNode node : nodes) {
-            writer.write(node.node.code + " [xlabel=\"" + node.node.getHeuristic() + "\"];\n");
+            writer.write(node.node.code + " [xlabel=<<font color=\"darkgreen\"><B>" + node.node.getHeuristic()
+                    + "</B></font>>];\n");
         }
 
         for (TreeNode node : nodes) {
@@ -64,6 +67,8 @@ public class Tree {
                 writer.write(node.parent.node.code + " -> " + node.node.code + " [label=\""
                         + graph.getDistance(node.parent.node, node.node) + "\"];\n");
         }
+
+        writer.write("}");
 
         writer.close();
     }

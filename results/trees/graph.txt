@@ -1,5 +1,6 @@
+digraph G {
 McDo_VC [xlabel=<<font color="darkgreen"><B>32.6</B></font>>];
-Subway [xlabel=<<font color="darkgreen"><B>23.8</B></font>>];
+Subway [xlabel=<<font color="darkgreen"><B>23.799999999999997</B></font>>];
 SB_GC [xlabel=<<font color="darkgreen"><B>22.2</B></font>>];
 SB_CSB [xlabel=<<font color="darkgreen"><B>29.0</B></font>>];
 SB_1T [xlabel=<<font color="darkgreen"><B>25.0</B></font>>];
@@ -13,16 +14,16 @@ Belgan [xlabel=<<font color="darkgreen"><B>42.2</B></font>>];
 McDo_Q [xlabel=<<font color="darkgreen"><B>40.0</B></font>>];
 JB_M [xlabel=<<font color="darkgreen"><B>28.0</B></font>>];
 JB_VC [xlabel=<<font color="darkgreen"><B>35.8</B></font>>];
-JB_Q [xlabel=<<font color="darkgreen"><B>26.2</B></font>>];
+JB_Q [xlabel=<<font color="darkgreen"><B>26.199999999999996</B></font>>];
 Prelude [xlabel=<<font color="darkgreen"><B>53.6</B></font>>];
 C24 [xlabel=<<font color="darkgreen"><B>26.4</B></font>>];
 Infinit_OAP [xlabel=<<font color="darkgreen"><B>45.8</B></font>>];
 Infinit_B [xlabel=<<font color="darkgreen"><B>46.4</B></font>>];
 LaToca [xlabel=<<font color="darkgreen"><B>32.8</B></font>>];
-Barn [xlabel=<<font color="darkgreen"><B>23.2</B></font>>];
-KFC [xlabel=<<font color="darkgreen"><B>34.4</B></font>>];
+Barn [xlabel=<<font color="darkgreen"><B>23.200000000000003</B></font>>];
+KFC [xlabel=<<font color="darkgreen"><B>34.400000000000006</B></font>>];
 BonChon [xlabel=<<font color="darkgreen"><B>30.4</B></font>>];
-MangIn [xlabel=<<font color="darkgreen"><B>27.6</B></font>>];
+MangIn [xlabel=<<font color="darkgreen"><B>27.599999999999994</B></font>>];
 Kuh [xlabel=<<font color="darkgreen"><B>46.4</B></font>>];
 EBC [xlabel=<<font color="darkgreen"><B>25.0</B></font>>];
 PC_B -> Belgan [label="13.31"];
@@ -62,3 +63,4 @@ EBC -> PC_GM [label="99.39"];
 Kuh -> JB_M [label="229.65"];
 JB_M -> Prelude [label="120.31"];
 PC_B -> C24 [label="69.71"];
+}

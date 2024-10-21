@@ -1,0 +1,5 @@
+Algorithm	End Timestamp (ms)	Nodes Visited	Nodes Created	Edges Analyzed	Time Elapsed (ns)
+Backtracking	1729518158359	27	27	74	19468500
+DFS	1729518158371	14	20	36	1418300
+BFS	1729518158374	25	27	67	1854800
+UCS	1729518158379	24	26	66	3873300

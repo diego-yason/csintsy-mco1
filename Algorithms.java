@@ -1,19 +1,28 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
-import java.util.HashMap;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Algorithms {
-    public static Node[] BFS(Graph graph, Node start, Node goal) {
+    public static Node[] BFS(Graph graph, Node start, Node goal) throws IOException {
+        // statistics for paper
+        int nodesVisited = 0;
+        int nodesCreated = 0;
+        int edgesAnalyzed = 0;
+        long startTime = System.nanoTime();
+
         Tree tree = new Tree(start);
+        nodesCreated++;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(tree.root);
 
         TreeNode goalTree = null;
         while (!queue.isEmpty()) {
             TreeNode current = queue.poll();
+            nodesVisited++;
             if (current.node.equals(goal)) {
                 goalTree = current;
                 break;
@@ -21,32 +30,47 @@ public class Algorithms {
 
             Node[] neighbors = current.node.getNeighbors();
             for (Node neighbor : neighbors) {
+                edgesAnalyzed++;
                 if (!tree.contains(neighbor)) {
                     TreeNode neighborTN = tree.addNode(neighbor, current);
+                    nodesCreated++;
                     tree.addEdge(current, neighborTN, graph.getDistance(current.node, neighbor));
                     queue.add(neighborTN);
                 }
             }
         }
 
-        try {
-            tree.printInformation(graph, "bfs");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        tree.printInformation(graph, "bfs");
+
+        long stopTime = System.nanoTime();
+        long elapsedTime = stopTime - startTime;
+
+        File file = new File("results/statistics.tsv");
+        FileWriter writer = new FileWriter(file, true);
+        writer.append(
+                "BFS\t" + System.currentTimeMillis() + "\t" + nodesVisited + "\t" + nodesCreated + "\t" + edgesAnalyzed
+                        + "\t" + elapsedTime + "\n");
+        writer.close();
 
         return tree.getPathToRoot(goalTree);
     }
 
-    public static Node[] DFS(Graph graph, Node start, Node goal) {
+    public static Node[] DFS(Graph graph, Node start, Node goal) throws IOException {
+        // statistics for paper
+        int nodesVisited = 0;
+        int nodesCreated = 0;
+        int edgesAnalyzed = 0;
+        long startTime = System.nanoTime();
+
         Tree tree = new Tree(start);
+        nodesCreated++;
         Stack<TreeNode> stack = new Stack<>();
         stack.push(tree.root);
 
         TreeNode goalTreeNode = null;
         while (!stack.isEmpty()) {
             TreeNode current = stack.pop();
+            nodesVisited++;
             if (current.node.equals(goal)) {
                 goalTreeNode = current;
                 break;
@@ -54,33 +78,47 @@ public class Algorithms {
 
             Node[] neighbors = current.node.getNeighbors();
             for (Node neighbor : neighbors) {
+                edgesAnalyzed++;
                 if (!tree.contains(neighbor)) {
                     TreeNode neighborTN = tree.addNode(neighbor, current);
+                    nodesCreated++;
                     tree.addEdge(current, neighborTN, graph.getDistance(current.node, neighbor));
                     stack.push(neighborTN);
                 }
             }
         }
 
-        try {
-            tree.printInformation(graph, "dfs");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        tree.printInformation(graph, "dfs");
+
+        long stopTime = System.nanoTime();
+        long elapsedTime = stopTime - startTime;
+
+        File file = new File("results/statistics.tsv");
+        FileWriter writer = new FileWriter(file, true);
+        writer.append(
+                "DFS\t" + System.currentTimeMillis() + "\t" + nodesVisited + "\t" + nodesCreated + "\t" + edgesAnalyzed
+                        + "\t" + elapsedTime + "\n");
+        writer.close();
 
         return tree.getPathToRoot(goalTreeNode);
     }
 
-    public static Node[] Backtracking(Graph graph, Node start, Node goal) {
-        Tree tree = new Tree(start);
+    public static Node[] Backtracking(Graph graph, Node start, Node goal) throws IOException {
+        // statistics for paper
+        int nodesVisited = 0;
+        int nodesCreated = 0;
+        int edgesAnalyzed = 0;
+        long startTime = System.nanoTime();
 
+        Tree tree = new Tree(start);
+        nodesCreated++;
         Stack<TreeNode> stack = new Stack<>();
         stack.push(tree.root);
 
         TreeNode goalTreeNode = null;
         while (!stack.isEmpty()) {
             TreeNode current = stack.pop();
+            nodesVisited++;
 
             if (current.node.equals(goal)) {
                 goalTreeNode = current;
@@ -88,48 +126,95 @@ public class Algorithms {
 
             Node[] neighbors = current.node.getNeighbors();
             for (Node neighbor : neighbors) {
+                edgesAnalyzed++;
                 if (!tree.contains(neighbor)) {
                     TreeNode neighborTN = tree.addNode(neighbor, current);
+                    nodesCreated++;
                     tree.addEdge(current, neighborTN, graph.getDistance(current.node, neighbor));
                     stack.push(neighborTN);
                 }
             }
         }
 
-        try {
-            tree.printInformation(graph, "backtracking");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        tree.printInformation(graph, "backtracking");
+
+        long stopTime = System.nanoTime();
+        long elapsedTime = stopTime - startTime;
+
+        File file = new File("results/statistics.tsv");
+        FileWriter writer = new FileWriter(file, true);
+        writer.append(
+                "Backtracking\t" + System.currentTimeMillis() + "\t" + nodesVisited + "\t" + nodesCreated + "\t"
+                        + edgesAnalyzed
+                        + "\t" + elapsedTime + "\n");
+        writer.close();
 
         return tree.getPathToRoot(goalTreeNode);
     }
 
-    public static Node[] GBFS(Graph graph, Node start, Node end) {
-        // Tree tree = new Tree(start);
+    public static Node[] GBFS(Graph graph, Node start, Node end) throws IOException {
+        // statistics for paper
+        int nodesVisited = 0;
+        int nodesCreated = 0;
+        int edgesAnalyzed = 0;
+        long startTime = System.nanoTime();
+
+        long stopTime = System.nanoTime();
+        long elapsedTime = stopTime - startTime;
+
+        File file = new File("results/statistics.tsv");
+        FileWriter writer = new FileWriter(file, true);
+        writer.append(
+                "GBFS\t" + System.currentTimeMillis() + "\t" + nodesVisited + "\t" + nodesCreated + "\t" + edgesAnalyzed
+                        + "\t" + elapsedTime + "\n");
+        writer.close();
+
         throw new UnsupportedOperationException("Unimplemented method 'GBFS'");
     }
 
-    public static Node[] AStar(Graph graph, Node start, Node end) {
-        // TODO Auto-generated method stub
+    public static Node[] AStar(Graph graph, Node start, Node end) throws IOException {
+        // statistics for paper
+        int nodesVisited = 0;
+        int nodesCreated = 0;
+        int edgesAnalyzed = 0;
+        long startTime = System.nanoTime();
 
+        long stopTime = System.nanoTime();
+        long elapsedTime = stopTime - startTime;
+
+        File file = new File("results/statistics.tsv");
+        FileWriter writer = new FileWriter(file, true);
+        writer.append(
+                "AStar\t" + System.currentTimeMillis() + "\t" + nodesVisited + "\t" + nodesCreated + "\t"
+                        + edgesAnalyzed
+                        + "\t" + elapsedTime + "\n");
+        writer.close();
         throw new UnsupportedOperationException("Unimplemented method 'AStar'");
     }
 
-    public static Node[] UCS(Graph graph, Node start, Node end) {
+    public static Node[] UCS(Graph graph, Node start, Node end) throws IOException {
+        // statistics for paper
+        int nodesVisited = 0;
+        int nodesCreated = 0;
+        int edgesAnalyzed = 0;
+        long startTime = System.nanoTime();
+
         Tree tree = new Tree(start);
+        nodesCreated++;
         NodeTripletList cumulativeList = new NodeTripletList();
         ArrayList<TreeNode> toBeVisited = new ArrayList<>();
         ArrayList<TreeNode> visited = new ArrayList<>();
 
         double previousCost = 0;
         TreeNode visiting = tree.root;
+        nodesVisited++;
         while (!visiting.node.equals(end)) {
             Node[] neighbors = visiting.node.getNeighbors();
             for (Node neighbor : neighbors) {
+                edgesAnalyzed++;
                 if (!tree.contains(neighbor)) {
                     TreeNode neighborTN = tree.addNode(neighbor, visiting);
+                    nodesCreated++;
                     tree.addEdge(visiting, neighborTN, graph.getDistance(visiting.node, neighbor));
                     toBeVisited.add(neighborTN);
                     cumulativeList.add(new NodeTriplet(visiting.node, neighbor,
@@ -139,22 +224,27 @@ public class Algorithms {
 
             visited.add(visiting);
             toBeVisited.remove(visiting);
-            final TreeNode currentVisiting = visiting;
             toBeVisited.sort((a, b) -> {
                 return Double.compare(cumulativeList.find(a.parent.node, a.node).getValue(),
                         cumulativeList.find(b.parent.node, b.node).getValue());
             });
 
             visiting = toBeVisited.get(0);
+            nodesVisited++;
             previousCost = cumulativeList.find(visiting.parent.node, visiting.node).getValue();
         }
 
-        try {
-            tree.printInformation(graph, "ucs");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        tree.printInformation(graph, "ucs");
+
+        long stopTime = System.nanoTime();
+        long elapsedTime = stopTime - startTime;
+
+        File file = new File("results/statistics.tsv");
+        FileWriter writer = new FileWriter(file, true);
+        writer.append(
+                "UCS\t" + System.currentTimeMillis() + "\t" + nodesVisited + "\t" + nodesCreated + "\t" + edgesAnalyzed
+                        + "\t" + elapsedTime + "\n");
+        writer.close();
 
         return tree.getPathToRoot(visiting);
     }

@@ -8,6 +8,10 @@ public class Graph {
 
     }
 
+    public void addNode(Place place) {
+        nodes.add(new Node(this, place));
+    }
+
     public Node getNode(int index) {
         return nodes.get(index);
     }

@@ -1,15 +1,20 @@
 import java.util.ArrayList;
 
 public class Graph {
-    protected ArrayList<Node> nodes = new ArrayList<Node>();
-    protected ArrayList<Edge> edges = new ArrayList<Edge>();
+    protected ArrayList<Node> nodes;
+    protected ArrayList<Edge> edges;
 
     public Graph() {
-
+        nodes = new ArrayList<Node>();
+        edges = new ArrayList<Edge>();
     }
 
     public void addNode(Place place) {
         nodes.add(new Node(this, place));
+    }
+
+    public void addEdge(Node a, Node b, double distance) {
+        edges.add(new Edge(a, b, distance));
     }
 
     public Node getNode(int index) {

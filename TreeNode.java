@@ -1,8 +1,9 @@
-public class TreeNode extends Node {
+public class TreeNode {
     final public TreeNode parent;
+    final public Node node;
 
-    public TreeNode(Graph graph, Node node, TreeNode parent) {
-        super(graph, node);
+    public TreeNode(Tree graph, Node node, TreeNode parent) {
+        this.node = node;
         this.parent = parent;
     }
 

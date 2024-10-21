@@ -11,10 +11,10 @@ public class Node extends Place {
     public Node[] getNeighbors() {
         ArrayList<Node> neighbors = new ArrayList<Node>();
         for (Edge edge : graph.getEdges()) {
-            if (edge.a == this) {
-                neighbors.add(edge.b);
-            } else if (edge.b == this) {
-                neighbors.add(edge.a);
+            if (edge.a.equals(this)) {
+                neighbors.add((Node) edge.b);
+            } else if (edge.b.equals(this)) {
+                neighbors.add((Node) edge.a);
             }
         }
         return neighbors.toArray(new Node[neighbors.size()]);

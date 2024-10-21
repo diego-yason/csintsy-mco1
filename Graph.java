@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Graph {
     protected ArrayList<Node> nodes;
@@ -21,7 +24,7 @@ public class Graph {
         return nodes.get(index);
     }
 
-    public Node searchNode(String code) {
+    public Node getNode(String code) {
         for (Node node : nodes) {
             if (node.code.equals(code)) {
                 return node;
@@ -36,10 +39,26 @@ public class Graph {
 
     public double getDistance(Node current, Node neighbor) {
         for (Edge edge : edges) {
-            if (edge.a == current && edge.b == neighbor) {
+            if (edge.a == current && edge.b == neighbor || edge.a == neighbor && edge.b == current) {
                 return edge.distance;
             }
         }
-        return 0;
+        throw new IllegalArgumentException("No edge between nodes");
+    }
+
+    public void printInformation() throws IOException {
+        File file = new File("results/trees/graph.txt");
+        file.createNewFile();
+        FileWriter writer = new FileWriter(file);
+
+        for (Node node : nodes) {
+            writer.write(
+                    node.code + " [xlabel=<<font color=\"darkgreen\"><B>" + node.getHeuristic() + "</B></font>>];\n");
+        }
+
+        for (Edge edge : edges) {
+            writer.write(edge.a.code + " -> " + edge.b.code + " [label=\"" + edge.distance + "\"];\n");
+        }
+        writer.close();
     }
 }

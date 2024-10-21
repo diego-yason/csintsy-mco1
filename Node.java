@@ -3,11 +3,6 @@ import java.util.ArrayList;
 public class Node extends Place {
     private Graph graph;
 
-    public Node(Graph graph, String name, String code) {
-        super(name, code);
-        this.graph = graph;
-    }
-
     public Node(Graph graph, Place node) {
         super(node);
         this.graph = graph;

@@ -47,7 +47,7 @@ public class Graph {
     }
 
     public void printInformation() throws IOException {
-        File file = new File("results/trees/graph.txt");
+        File file = new File("results/trees/graph.gv");
         file.createNewFile();
         FileWriter writer = new FileWriter(file);
 

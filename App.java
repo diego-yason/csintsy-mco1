@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
@@ -42,9 +43,20 @@ public class App {
                             node.time * 2);
         }
 
+        // print heuristic
+        File heuristicFile = new File("results/heuristic.tsv");
+        heuristicFile.createNewFile();
+        data.nodes.sort((a, b) -> Double.compare(b.getHeuristic(), a.getHeuristic()));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(heuristicFile))) {
+            for (Node node : data.nodes) {
+                writer.write(node.name + "\t" + node.getHeuristic());
+                writer.newLine();
+            }
+        }
+
         // sample run
-        Node start = data.getNode("Infinit_OAP");
-        Node end = data.getNode("BonChon");
+        Node start = data.getNode("Belgan");
+        Node end = data.nodes.getLast();
 
         Node[] result = Algorithms.Backtracking(data, start, end);
         writeResults(result, "backtracking.txt");
@@ -58,11 +70,11 @@ public class App {
         result = Algorithms.UCS(data, start, end);
         writeResults(result, "ucs.txt");
 
-        // result = Algorithms.GBFS(data, start, end);
-        // writeResults(result, "gbfs.txt");
+        result = Algorithms.GBFS(data, start, end);
+        writeResults(result, "gbfs.txt");
 
-        // result = Algorithms.AStar(data, start, end);
-        // writeResults(result, "astar.txt");
+        result = Algorithms.AStar(data, start, end);
+        writeResults(result, "astar.txt");
 
         data.printInformation();
 

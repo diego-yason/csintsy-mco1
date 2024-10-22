@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 import java.io.File;
@@ -159,8 +160,33 @@ public class Algorithms {
         int edgesAnalyzed = 0;
         long startTime = System.nanoTime();
 
+        Tree tree = new Tree(start);
+        nodesCreated++;
+
+        TreeNode current = tree.root;
+        ArrayList<TreeNode> toBeVisited = new ArrayList<>();
+        while (current.node != end) {
+            Node[] neighbors = current.node.getNeighbors();
+            nodesVisited++;
+
+            for (Node neighbor : neighbors) {
+                edgesAnalyzed++;
+                if (!tree.contains(neighbor)) {
+                    TreeNode neighborTN = tree.addNode(neighbor, current);
+                    nodesCreated++;
+                    tree.addEdge(current, neighborTN, graph.getDistance(current.node, neighbor));
+                    toBeVisited.add(neighborTN);
+
+                }
+            }
+            toBeVisited.sort((a, b) -> Double.compare(a.node.getHeuristic(), b.node.getHeuristic()));
+            current = toBeVisited.removeFirst();
+        }
+
         long stopTime = System.nanoTime();
         long elapsedTime = stopTime - startTime;
+
+        tree.printInformation(graph, "gbfs");
 
         File file = new File("results/statistics.tsv");
         FileWriter writer = new FileWriter(file, true);
@@ -169,7 +195,7 @@ public class Algorithms {
                         + "\t" + elapsedTime + "\n");
         writer.close();
 
-        throw new UnsupportedOperationException("Unimplemented method 'GBFS'");
+        return tree.getPathToRoot(current);
     }
 
     public static Node[] AStar(Graph graph, Node start, Node end) throws IOException {
@@ -178,6 +204,37 @@ public class Algorithms {
         int nodesCreated = 0;
         int edgesAnalyzed = 0;
         long startTime = System.nanoTime();
+
+        Tree tree = new Tree(start);
+        nodesCreated++;
+
+        ArrayList<TreeNode> toBeVisited = new ArrayList<>();
+        Map<Node, Double> cumulativeCost = new java.util.HashMap<>();
+
+        TreeNode current = tree.root;
+        cumulativeCost.put(start, 0.0);
+        while (current.node != end) {
+            Node[] neighbors = current.node.getNeighbors();
+            nodesVisited++;
+
+            for (Node neighbor : neighbors) {
+                edgesAnalyzed++;
+                if (!tree.contains(neighbor)) {
+                    TreeNode neighborTN = tree.addNode(neighbor, current);
+                    nodesCreated++;
+                    tree.addEdge(current, neighborTN, graph.getDistance(current.node, neighbor));
+                    toBeVisited.add(neighborTN);
+                    cumulativeCost.put(neighbor,
+                            cumulativeCost.get(current.node) + graph.getDistance(current.node, neighbor));
+                }
+            }
+
+            toBeVisited.sort((a, b) -> Double.compare(a.node.getHeuristic() + cumulativeCost.get(a.node),
+                    b.node.getHeuristic() + cumulativeCost.get(b.node)));
+            current = toBeVisited.remove(0);
+        }
+
+        tree.printInformation(graph, "astar");
 
         long stopTime = System.nanoTime();
         long elapsedTime = stopTime - startTime;
@@ -189,7 +246,7 @@ public class Algorithms {
                         + edgesAnalyzed
                         + "\t" + elapsedTime + "\n");
         writer.close();
-        throw new UnsupportedOperationException("Unimplemented method 'AStar'");
+        return tree.getPathToRoot(current);
     }
 
     public static Node[] UCS(Graph graph, Node start, Node end) throws IOException {

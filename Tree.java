@@ -51,7 +51,7 @@ public class Tree {
 
     public void printInformation(Graph graph, String algorithm) throws IOException {
 
-        File file = new File("results/trees/" + algorithm + ".txt");
+        File file = new File("results/trees/" + algorithm + ".gv");
         file.createNewFile();
         FileWriter writer = new FileWriter(file);
 

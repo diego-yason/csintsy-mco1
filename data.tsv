@@ -1,5 +1,5 @@
-code	name	ptspa
-McDo_VC	McDonald's Vito Cruz	58031
+code	name	ptspa	opening	closing
+McDo_VC	McDonald's Vito Cruz	58031	0000	2359
 Subway	Subway	61230
 SB_GC	Starbucks GC	05338
 SB_CSB	Starbucks CSB	63412
@@ -26,3 +26,7 @@ BonChon	Bon Chon 	01987
 MangIn	Mang Inasal	41463
 Kuh	KuhMeal	59726
 EBC	Everything But Cheese!	01954
+ElPoco	El Poco Loco	94203
+OTW	On The Way Malate	12345
+TimHort	Tim Hortons	72604
+BOK	Bok Fried Chicken	19540

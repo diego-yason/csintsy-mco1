@@ -1,3 +1,5 @@
+package server;
+
 public class Place {
     final public String name;
     final public String code;

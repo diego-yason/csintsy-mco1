@@ -1,3 +1,5 @@
+package server;
+
 public class TreeEdge {
     final public TreeNode a;
     final public TreeNode b;

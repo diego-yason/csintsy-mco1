@@ -1,13 +1,51 @@
+package server;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.InetSocketAddress;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
+
 public class App {
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        Graph data = createGraph();
+
+        // print heuristic
+        File heuristicFile = new File("results/heuristic.tsv");
+        heuristicFile.createNewFile();
+        data.nodes.sort((a, b) -> Double.compare(b.getHeuristic(), a.getHeuristic()));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(heuristicFile))) {
+            for (Node node : data.nodes) {
+                writer.write(node.name + "\t" + node.getHeuristic());
+                writer.newLine();
+            }
+        }
+        data.printInformation();
+
+        // set up server
+
+        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+
+        server.createContext("/heuristic", new HttpHandler() {
+            @Override
+            public void handle(HttpExchange exchange) throws IOException {
+            }
+        });
+
+        server.createContext("/run", new HttpHandler() {
+            @Override
+            public void handle(HttpExchange exchange) throws IOException {
+            }
+        });
+    }
+
+    private static Graph createGraph() throws FileNotFoundException {
         Graph data = new Graph();
 
         File dataFile = new File("data.tsv");
@@ -43,43 +81,7 @@ public class App {
                             node.time * 2);
         }
 
-        // print heuristic
-        File heuristicFile = new File("results/heuristic.tsv");
-        heuristicFile.createNewFile();
-        data.nodes.sort((a, b) -> Double.compare(b.getHeuristic(), a.getHeuristic()));
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(heuristicFile))) {
-            for (Node node : data.nodes) {
-                writer.write(node.name + "\t" + node.getHeuristic());
-                writer.newLine();
-            }
-        }
-
-        // sample run
-        Node start = data.getNode("Belgan");
-        Node end = data.nodes.getLast();
-
-        Node[] result = Algorithms.Backtracking(data, start, end);
-        writeResults(result, "backtracking.txt");
-
-        result = Algorithms.DFS(data, start, end);
-        writeResults(result, "dfs.txt");
-
-        result = Algorithms.BFS(data, start, end);
-        writeResults(result, "bfs.txt");
-
-        result = Algorithms.UCS(data, start, end);
-        writeResults(result, "ucs.txt");
-
-        result = Algorithms.GBFS(data, start, end);
-        writeResults(result, "gbfs.txt");
-
-        result = Algorithms.AStar(data, start, end);
-        writeResults(result, "astar.txt");
-
-        data.printInformation();
-
-        System.out.println("Done");
-
+        return data;
     }
 
     private static void writeResults(Node[] result, String fileName) throws IOException {

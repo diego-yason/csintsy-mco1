@@ -1,3 +1,5 @@
+package server;
+
 public class TreeNode {
     final public TreeNode parent;
     final public Node node;

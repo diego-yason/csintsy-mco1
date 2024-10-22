@@ -1,3 +1,5 @@
+package server;
+
 public class Edge {
     final public Node a;
     final public Node b;

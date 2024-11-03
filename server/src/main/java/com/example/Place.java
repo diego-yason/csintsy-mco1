@@ -7,11 +7,11 @@ public class Place {
     final public int opening;
     final public int closing;
 
-    final public int price;
-    final public int time;
-    final public int s; // TODO: remember wtf this means
-    final public int p; // TODO: remember wtf this means
-    final public int accessibility;
+    final public int ambiance;
+    final public int service;
+    final public int location; // TODO: remember wtf this means
+    final public int price; // TODO: remember wtf this means
+    final public int taste;
 
     private double heuristic;
 
@@ -20,11 +20,11 @@ public class Place {
         this.code = code;
 
         String[] PTSPAArray = PTSPA.split("");
-        this.price = Integer.parseInt(PTSPAArray[0]);
-        this.time = Integer.parseInt(PTSPAArray[1]);
-        this.s = Integer.parseInt(PTSPAArray[2]);
-        this.p = Integer.parseInt(PTSPAArray[3]);
-        this.accessibility = Integer.parseInt(PTSPAArray[4]);
+        this.ambiance = Integer.parseInt(PTSPAArray[0]) + 1;
+        this.service = Integer.parseInt(PTSPAArray[1]) + 1;
+        this.location = Integer.parseInt(PTSPAArray[2]) + 1;
+        this.price = Integer.parseInt(PTSPAArray[3]) + 1;
+        this.taste = Integer.parseInt(PTSPAArray[4]) + 1;
 
         this.opening = Integer.parseInt(opening);
         this.closing = Integer.parseInt(closing);
@@ -37,11 +37,11 @@ public class Place {
         this.opening = place.opening;
         this.closing = place.closing;
 
+        this.ambiance = place.ambiance;
+        this.service = place.service;
+        this.location = place.location;
         this.price = place.price;
-        this.time = place.time;
-        this.s = place.s;
-        this.p = place.p;
-        this.accessibility = place.accessibility;
+        this.taste = place.taste;
 
         this.heuristic = place.heuristic;
     }

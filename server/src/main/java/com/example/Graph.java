@@ -35,6 +35,16 @@ public class Graph {
         return null;
     }
 
+    public Node getBestNode() {
+        Node best = nodes.get(0);
+        for (Node node : nodes) {
+            if (node.getHeuristic() < best.getHeuristic()) {
+                best = node;
+            }
+        }
+        return best;
+    }
+
     public Edge[] getEdges() {
         return edges.toArray(new Edge[edges.size()]);
     }

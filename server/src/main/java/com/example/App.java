@@ -119,11 +119,11 @@ public class App {
         // set heuristics
         for (Node node : data.nodes) {
             node.setHeuristic(
-                    node.accessibility * 0.4 +
-                            node.p * 1.4 +
-                            node.price * 2.4 +
-                            node.s * 1.6 +
-                            node.time * 2);
+                    node.taste * 0.4 +
+                            node.price * 1.4 +
+                            node.ambiance * 2.4 +
+                            node.location * 1.6 +
+                            node.service * 2);
         }
 
         // reverse values
@@ -178,7 +178,7 @@ public class App {
 
     }
 
-    private static Graph createGraph() throws FileNotFoundException {
+    public static Graph createGraph() throws FileNotFoundException {
         Graph data = new Graph();
 
         File dataFile = new File("data.tsv");
@@ -205,6 +205,18 @@ public class App {
         scanner.close();
 
         return data;
+    }
+
+    public static void createHeuristics(Graph data, double taste, double price, double ambiance, double location,
+            double service) {
+        for (Node node : data.nodes) {
+            node.setHeuristic(
+                    node.taste * taste +
+                            node.price * price +
+                            node.ambiance * ambiance +
+                            node.location * location +
+                            node.service * service);
+        }
     }
 
     private static void writeResults(Node[] result, String fileName) throws IOException {

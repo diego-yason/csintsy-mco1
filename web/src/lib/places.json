@@ -1,0 +1,126 @@
+[
+  {
+    "value": "McDo_VC",
+    "label": "McDonald's Vito Cruz"
+  },
+  {
+    "value": "Subway",
+    "label": "Subway"
+  },
+  {
+    "value": "SB_GC",
+    "label": "Starbucks GC"
+  },
+  {
+    "value": "SB_CSB",
+    "label": "Starbucks CSB"
+  },
+  {
+    "value": "SB_1T",
+    "label": "Starbucks 1T "
+  },
+  {
+    "value": "ZC_OAP",
+    "label": "Zus Coffee One Archer's Place"
+  },
+  {
+    "value": "ZC_UM",
+    "label": "Zus Coffee UMall "
+  },
+  {
+    "value": "CoffeeSt",
+    "label": "Coffee Street"
+  },
+  {
+    "value": "PC_GM",
+    "label": "Potato Corner Green Mall"
+  },
+  {
+    "value": "PC_B",
+    "label": "Potato Corner Bloemen"
+  },
+  {
+    "value": "PC_UM",
+    "label": "Potato Corner UMall"
+  },
+  {
+    "value": "Belgan",
+    "label": "Belgan Waffle Bloemen"
+  },
+  {
+    "value": "McDo_Q",
+    "label": "McDonald's Quirino"
+  },
+  {
+    "value": "JB_M",
+    "label": "Jollibee Malate"
+  },
+  {
+    "value": "JB_VC",
+    "label": "Jollibee Vito Cruz"
+  },
+  {
+    "value": "JB_Q",
+    "label": "Jollibee Quirino "
+  },
+  {
+    "value": "Prelude",
+    "label": "Prelude Coffee"
+  },
+  {
+    "value": "C24",
+    "label": "24 Chicken"
+  },
+  {
+    "value": "Infinit_OAP",
+    "label": "InfiniTea One Archer's Place"
+  },
+  {
+    "value": "Infinit_B",
+    "label": "InfiniTea Bloemen"
+  },
+  {
+    "value": "LaToca",
+    "label": "La Toca Taqueria"
+  },
+  {
+    "value": "Barn",
+    "label": "Barn by Borro"
+  },
+  {
+    "value": "KFC",
+    "label": "KFC"
+  },
+  {
+    "value": "BonChon",
+    "label": "Bon Chon"
+  },
+  {
+    "value": "MangIn",
+    "label": "Mang Inasal"
+  },
+  {
+    "value": "Kuh",
+    "label": "KuhMeal"
+  },
+  {
+    "value": "EBC",
+    "label": "Everything But Cheese!"
+  },
+  {
+    "value": "ElPoco",
+    "label": "El Poco Loco"
+  },
+  {
+    "value": "OTW",
+    "label": "On The Way Malate"
+  },
+  {
+    "value": "TimHort",
+    "label": "Tim Hortons"
+  },
+  {
+    "value": "BOK",
+    "label": "Bok Fried Chicken"
+  }
+]

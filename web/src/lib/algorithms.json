@@ -1,0 +1,26 @@
+[
+  {
+    "value": "AStar",
+    "label": "A*"
+  },
+  {
+    "value": "BFS",
+    "label": "Breadth First Search"
+  },
+  {
+    "value": "DFS",
+    "label": "Depth First Search"
+  },
+  {
+    "value": "Backtracking",
+    "label": "Backtracking"
+  },
+  {
+    "value": "GBFS",
+    "label": "Greedy Best First Search"
+  },
+  {
+    "value": "UCS",
+    "label": "Uniform Cost Search"
+  }
+]

@@ -2,6 +2,7 @@ import { writable } from "svelte/store";
 import { PUBLIC_PORT_NUMBER } from "$env/static/public";
 
 export const path = writable<string[]>([]);
+export const distance = writable<number>(0);
 
 export async function request(
   algorithm: string,
@@ -12,8 +13,9 @@ export async function request(
   location: number,
   service: number
 ) {
-  const url = "localhost:" + PUBLIC_PORT_NUMBER;
+  const url = "http://localhost:" + PUBLIC_PORT_NUMBER;
   const res = await fetch(url, {
+    method: "POST",
     body: JSON.stringify({
       algorithm,
       start,
@@ -25,5 +27,10 @@ export async function request(
     }),
   });
   const data = await res.json();
-  path.set(data);
+  path.set(data.array);
+  distance.set(data.total);
 }
+
+path.subscribe((value) => {
+  console.log(value);
+});

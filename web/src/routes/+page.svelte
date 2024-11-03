@@ -6,10 +6,10 @@
     type AutocompleteOption,
     RangeSlider,
   } from "@skeletonlabs/skeleton";
-
   import { request } from "$lib/requestHandler";
-
   import { slide } from "svelte/transition";
+
+  import Path from "./Path.svelte";
 
   let searchPlace = "",
     searchAlgo = "",
@@ -41,7 +41,7 @@
   $: isValid = isInPlaces && isInAlgorithms;
 </script>
 
-<div class="grid grid-cols-4">
+<div class="grid grid-cols-3 px-36 items-center">
   <form
     on:submit|preventDefault={startAlgo}
     class="flex flex-col gap-5 col-span-2 justify-center min-h-screen items-center transition-all"
@@ -54,7 +54,7 @@
         type="search"
         name="searchbar"
         bind:value={searchPlace}
-        placeholder="Where are we making kain, pare?"
+        placeholder="Where are we making kain from, pare?"
       />
       {#if !isInPlaces}
         <div
@@ -139,6 +139,7 @@
       {/if}
     </button>
   </form>
+  <Path></Path>
 </div>
 
 <style>

@@ -116,17 +116,35 @@ public class Server {
                     break;
             }
 
-            // Send response
-            String response = "[";
-            for (Node node : result) {
-                response += "\"" + node.name + "\",";
+            // get path total
+            double pathTotal = 0;
+            for (int i = 0; i < result.length - 1; i++) {
+                Edge[] edges = data.getEdges();
+                for (Edge edge : edges) {
+                    if (edge.a == result[i] && edge.b == result[i + 1]
+                            || edge.b == result[i] && edge.a == result[i + 1]) {
+                        pathTotal += edge.distance;
+                    }
+                }
             }
-            response = response.substring(0, response.length() - 1) + "]";
+
+            // Create JSON response
+            StringBuilder responseBuilder = new StringBuilder();
+            responseBuilder.append("{\"total\": ").append(pathTotal).append(", \"array\": [");
+            for (Node node : result) {
+                responseBuilder.append("\"").append(node.name).append("\",");
+            }
+            if (result.length > 0) {
+                responseBuilder.setLength(responseBuilder.length() - 1); // Remove the trailing comma
+            }
+            responseBuilder.append("]}");
+            String response = responseBuilder.toString();
 
             // Send to client
             String header = "HTTP/1.1 200 OK\r\n"
                     + "Content-Type: application/json\r\n"
                     + "Content-Length: " + response.getBytes().length + "\r\n"
+                    + "Access-Control-Allow-Origin: *\r\n"
                     + "Connection: close\r\n\r\n";
             clientSocket.getOutputStream().write(header.getBytes());
             clientSocket.getOutputStream().write(response.getBytes());

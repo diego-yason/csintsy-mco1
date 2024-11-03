@@ -1,32 +1,49 @@
-code	name	ptspa	opening	closing
-McDo_VC	McDonald's Vito Cruz	58031	0000	2359
-Subway	Subway	61230	0700	2115
-SB_GC	Starbucks GC	05338	0600	2300
-SB_CSB	Starbucks CSB	63412	0730	0000
-SB_1T	Starbucks 1T 	05550	0630	2300
-ZC_OAP	Zus Coffee One Archer's Place	91549	0700	2240
-ZC_UM	Zus Coffee UMall 	75634	0600	2140
-CoffeeSt	Coffee Street	56134	0630	2330
-PC_GM	Potato Corner Green Mall 	00496	0900	2300
-PC_B	Potato Corner Bloemen	30589	0900	1700
-PC_UM	Potato Corner UMall	45188	1000	2100
-Belgan	Belgan Waffle Bloemen	28950	0900	1700
-McDo_Q	McDonald's Quirino	84346	0000	2359
-JB_M	Jolibee Malate	17164	0000	2359
-JB_VC	Jolibee Vito Cruz	47613	0900	1700
-JB_Q	Jolibee Quirino 	62039	0000	2359
-Prelude	Prelude Coffee	89726	0800	2300
-C24	24 Chicken	12569	1000	2200
-Infinit_OAP	InfiniTea One Archer's Place 	89412	1100	0100
-Infinit_B	InfiniTea Bloemen	71985	0900	1700
-LaToca	La Toca Taqueria	82146	1100	0200
-Barn	Barn by Borro	20648	1000	0000
-KFC	KFC	74146	0000	2359
-BonChon	Bon Chon 	01987	1000	2100
-MangIn	Mang Inasal	41463	0900	2200
-Kuh	KuhMeal	59726	1000	2100
-EBC	Everything But Cheese!	01954	1100	0000
-ElPoco	El Poco Loco	94203	1000	2230
-OTW	On The Way Malate	12345	1000	2200
-TimHort	Tim Hortons	72604	0700	2100
-BOK	Bok Fried Chicken	19540	1030	0300
+a	b	distance
+PC_B	Belgan	13.31
+PC_B	CoffeeSt	116.40
+Prelude	SB_GC	71.32
+SB_GC	PC_GM	78.09
+Subway	SB_GC	18.35
+Subway	Prelude	47.21
+CoffeeSt	Prelude	4.12
+C24	CoffeeSt	44.63
+Infinit_B	Belgan	6.69
+Infinit_B	PC_B	12.49
+Subway	Infinit_OAP	29.40
+ZC_OAP	Infinit_OAP	34.25
+Infinit_OAP	JB_M	56.29
+PC_B	McDo_VC	266.40
+McDo_VC	KFC	23.18
+BonChon	KFC	23.47
+BonChon	PC_UM	11.70
+PC_UM	KFC	6.10
+PC_UM	ZC_UM	12.63
+C24	McDo_VC	294.62
+SB_1T	ZC_UM	72.63
+SB_1T	JB_VC	46.39
+MangIn	JB_VC	29.92
+MangIn	SB_CSB	136.39
+Kuh	SB_CSB	142.80
+Kuh	PC_B	176.51
+PC_GM	Barn	39.85
+PC_GM	LaToca	22.62
+LaToca	SB_GC	104.92
+PC_GM	Subway	87.84
+JB_Q	McDo_Q	49.55
+EBC	JB_Q	297.63
+EBC	JB_M	59.31
+EBC	PC_GM	99.39
+Kuh	JB_M	229.65
+JB_M	Prelude	120.31
+PC_B	C24	69.71
+ElPoco	SB_CSB	750.03
+OTW	SB_1T	136.35
+TimHort	SB_1T	72.20
+TimHort	OTW	102.37
+TimHort	SB_CSB	201.75
+ElPoco	OTW	240.20
+ElPoco	BOK	247.23
+BOK	Kuh	75.72
+BOK	JB_M	156.92
+BOK	C24	123.34
+BOK	PC_B	168.59

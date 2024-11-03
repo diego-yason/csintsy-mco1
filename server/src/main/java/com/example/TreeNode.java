@@ -1,4 +1,4 @@
-package server;
+package com.example;
 
 public class TreeNode {
     final public TreeNode parent;

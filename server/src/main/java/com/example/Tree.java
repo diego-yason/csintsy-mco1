@@ -1,4 +1,4 @@
-package server;
+package com.example;
 
 import java.util.ArrayList;
 import java.io.IOException;

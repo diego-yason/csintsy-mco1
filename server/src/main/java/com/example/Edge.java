@@ -1,4 +1,4 @@
-package server;
+package com.example;
 
 public class Edge {
     final public Node a;

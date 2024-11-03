@@ -1,4 +1,4 @@
-package server;
+package com.example;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -182,7 +182,7 @@ public class Algorithms {
                 }
             }
             toBeVisited.sort((a, b) -> Double.compare(a.node.getHeuristic(), b.node.getHeuristic()));
-            current = toBeVisited.removeFirst();
+            current = toBeVisited.remove(0);
         }
 
         long stopTime = System.nanoTime();
